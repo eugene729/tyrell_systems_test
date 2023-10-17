@@ -5,7 +5,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.post('/distribute-cards', (req, res) => {
-  const n = parseInt(req.body.n || 0);
+  // const n = parseInt(req.body.n || 0);
+
+  // Hardcode input for testing purpose
+  const n = parseInt(52 || 0);
 
   if (n <= 0 || n > 53) {
     res.status(400).json({ error: 'Input value does not exist or value is invalid' });
