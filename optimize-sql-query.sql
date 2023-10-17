@@ -5,7 +5,6 @@ SELECT
     J.job_category_id AS Jobs__job_category_id,
     J.job_type_id AS Jobs__job_type_id,
     J.description AS Jobs__description,
-    -- Add other fields as needed
     J.sort_order AS Jobs__sort_order,
     J.publish_status AS Jobs__publish_status,
     J.version AS Jobs__version,
@@ -16,22 +15,18 @@ SELECT
     JC.id AS JobCategories__id,
     JC.name AS JobCategories__name,
     JC.sort_order AS JobCategories__sort_order,
-    -- Add other fields for job_categories as needed
     JT.id AS JobTypes__id,
     JT.name AS JobTypes__name,
     JT.job_category_id AS JobTypes__job_category_id,
     JT.sort_order AS JobTypes__sort_order
-    -- Add other fields for job_types as needed
 FROM jobs J
 LEFT JOIN job_categories JC ON J.job_category_id = JC.id
 LEFT JOIN job_types JT ON J.job_type_id = JT.id
--- LEFT JOIN other tables as needed
 WHERE (
     JC.name LIKE '%キャビンアテンダント%'
     OR JT.name LIKE '%キャビンアテンダント%'
     OR J.name LIKE '%キャビンアテンダント%'
     OR J.description LIKE '%キャビンアテンダント%'
-    -- Add other conditions as needed
 )
 AND J.publish_status = 1
 AND J.deleted IS NULL
